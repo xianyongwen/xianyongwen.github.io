@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Electron Vue3 Typescript Axios项目搭建 - XYW - A web fontend blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="xianyongwen" /><meta name="description" content="引言：老大说，我们需要做一个windows客户端，你可以做吗，可以的话就给你们做，不招windows软件开发了。我看了一下需求，业务功能为主" /><meta name="keywords" content="electron, vue, vite" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.92.0 with theme even" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/electron-vue3-typescript-axios%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Electron Vue3 Typescript Axios项目搭建" />
+<meta property="og:description" content="引言：老大说，我们需要做一个windows客户端，你可以做吗，可以的话就给你们做，不招windows软件开发了。我看了一下需求，业务功能为主" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/post/electron-vue3-typescript-axios%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2020-12-14T18:14:12+08:00" />
+<meta property="article:modified_time" content="2020-12-14T18:14:12+08:00" />
+
+<meta itemprop="name" content="Electron Vue3 Typescript Axios项目搭建">
+<meta itemprop="description" content="引言：老大说，我们需要做一个windows客户端，你可以做吗，可以的话就给你们做，不招windows软件开发了。我看了一下需求，业务功能为主"><meta itemprop="datePublished" content="2020-12-14T18:14:12+08:00" />
+<meta itemprop="dateModified" content="2020-12-14T18:14:12+08:00" />
+<meta itemprop="wordCount" content="2649">
+<meta itemprop="keywords" content="electron,vue3," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Electron Vue3 Typescript Axios项目搭建"/>
+<meta name="twitter:description" content="引言：老大说，我们需要做一个windows客户端，你可以做吗，可以的话就给你们做，不招windows软件开发了。我看了一下需求，业务功能为主"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">XYW</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">时间线</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">XYW</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">时间线</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Electron Vue3 Typescript Axios项目搭建</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-12-14 </span>
+        <div class="post-category">
+            <a href="/categories/electron/"> electron </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#1前端框架的选型">1、前端框架的选型：</a></li>
+            <li><a href="#2前端框架与electron的结合">2、前端框架与electron的结合：</a></li>
+            <li><a href="#3项目搭建过程">3、项目搭建过程</a></li>
+            <li><a href="#4axios与request的引入">4、Axios与request的引入</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <blockquote>
+<p>引言：老大说，我们需要做一个windows客户端，你可以做吗，可以的话就给你们做，不招windows软件开发了。我看了一下需求，业务功能为主，涉及上传下载文件，对计算性能要求不高，对图像渲染要求不高，electron应该可以应付。因为之前用electron帮女朋友写过一个excel生成工具，帮她应付公司的做表格任务，所以我对electron还是有点了解的。于是我说，我用electron试试吧，还能跨平台呢。</p>
+</blockquote>
+<hr>
+<h3 id="1前端框架的选型">1、前端框架的选型：</h3>
+<p>  由于公司以往的项目都是使用的vue2，而且同事们也是对vue的熟悉程度高于react，所以前端框架选型毫无疑问地选择vue，至于vue2还是vue3呢，这个时候vue3也出了有一段时间了，应该也挺稳定了，用于生产了，而且我们既然用electron，不需要考虑浏览器兼容性，也就是不用管ie了，基于vue3带来的种种好处，就不在这里叙述了，请自行查阅。于是我毫无顾虑地选择了vue3。</p>
+<h3 id="2前端框架与electron的结合">2、前端框架与electron的结合：</h3>
+<p>  框架搭建之初，我们需要考虑几个问题：<br>
+  1、程序如何调试，如何打包<br>
+  2、静态资源如何引入<br>
+  3、页面如何切换<br>
+  4、接口请求是否能成功<br>
+  如果是单纯的web部署应用，直接vue-cli建立一个工程，使用webpack解决打包问题，页面切换就用vue-router，接口请求基本上也是跟接口部署在同一域名下，不用考虑跨域问题，开发环境的话，使用proxy_table代理就好了。<br>
+  electron项目，我们就不可能只用浏览器来调试界面，最后用build出一个dist文件夹，丢到electron里替换index.html,然后编译出安装包。这样子不单止调试环境跟实际环境差异很大，而且调试渲染进程与主进程通信和主进程的调试会非常不方便。所以我们最好还是启动electron，然后在里面调试我们的全部代码。<br>
+  我们知道electron启动的流程大致如下：<br>
+  electron启动:app.on(ready) -&gt; 创建window:new BrowserWindow() -&gt; 加载页面:loadURL或者loadFile。<br>
+  对于开发配置，我们需要先启动前端工程，然后在启动electron，electron加载前端开发服务url。<br>
+  对于生产配置，我们需要先编译前端工程，得到目标文件（dist下文件），然后在启动electron，electron加载前端。<br>
+  我们需要编写先编译前端，然后再启动electron的脚本。当然前端项目的编译输出与electron的加载前端的页面等都要配置好，生产环境加载前端页面，为了更好地使用vue-router，最好还是使用app://协议。得益于现在vue良好的生态与electron巨大的用户量，这些脚本与配置并不需要我们自己动手去写，我们可以站在巨人的肩旁上，遥望远方。<br>
+  我们可以选择：<br>
+  1、electron-vue<br>
+  2、Vue CLI Plugin Electron Builder<br>
+  当年我帮女朋友写的excel生成小工具就是基于electron-vue，所以我首先会考虑electron-vue，但是electron-vue已经很久没有更新，而且其生成的工程结构也不适合引入vue3。所以我还是选择了后者。</p>
+<h3 id="3项目搭建过程">3、项目搭建过程</h3>
+<p>  工欲善其事，必先利其器，对于搭建electron工程，我们首先需要备好的是梯子，没错，就是翻墙的梯子，否则安装依赖装个两三天也不奇怪。<br>
+  我们首先使用vue-cli搭建前端工程，具体步骤请参见vue-cli官网文档。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">vue create xywtest
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="./6.png" alt="vue-cli">
+<img src="./7.png" alt="vue-cli">
+建好前端项目后，我们安装Vue CLI Plugin Electron Builder</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">cd xywtest
+vue add electron-builder
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="./8.jpg" alt="vue-cli">
+我们选择9.0.0版本
+<img src="./9.jpg" alt="vue-cli">
+然后我们使用yarn安装依赖包</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">yarn
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="./11.png" alt="vue-cli">
+依赖包安装好之后，我们启动项目</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">yarn electron:serve
+</code></pre></td></tr></table>
+</div>
+</div><p>如果遇到下面这种情况，项目启动了很久的话
+<img src="./12.png" alt="vue-cli">
+我们可以把background.ts文件的如下代码注释掉，不安装vue-devtool了</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">// if (isDevelopment &amp;&amp; !process.env.IS_TEST) {
+  //   // Install Vue Devtools
+  //   try {
+  //     await installExtension(VUEJS_DEVTOOLS)
+  //   } catch (e) {
+  //     console.error(&#39;Vue Devtools failed to install:&#39;, e.toString())
+  //   }
+  // }
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="./13.jpg" alt="vue-cli">
+项目启动成功
+<img src="./14.png" alt="vue-cli"></p>
+<h3 id="4axios与request的引入">4、Axios与request的引入</h3>
+<p>  为什么我要同时引入axios与request呢，因为渲染进程必须用axios，主进程必须用request吗？非也。主要是因为我们项目会涉及到文件的上传下载断点续传，主进程使用request对流的控制比较好操作，而更多的业务接口使用promise封装的axios更加方便，所以在我们项目里同时引入了这两个。<br>
+首先安装axios</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">yarn add axios
+</code></pre></td></tr></table>
+</div>
+</div><p>  关于接口发送拦截,授权处理，响应拦截,报错处理这些就不在这里叙述了。<br>
+  然后我们在Home.vue发个请求测试一下。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Home.vue" data-lang="Home.vue"><span class="c1">// Home.vue
+</span><span class="c1"></span><span class="p">&lt;</span><span class="nt">script</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;ts&#34;</span><span class="p">&gt;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">defineComponent</span><span class="p">,</span> <span class="nx">onMounted</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;vue&#39;</span>
+<span class="kr">import</span> <span class="nx">axios</span> <span class="nx">from</span> <span class="s1">&#39;axios&#39;</span>
+<span class="kr">import</span> <span class="nx">HelloWorld</span> <span class="nx">from</span> <span class="s1">&#39;@/components/HelloWorld.vue&#39;</span> <span class="c1">// @ is an alias to /src
+</span><span class="c1"></span>
+<span class="kr">export</span> <span class="k">default</span> <span class="nx">defineComponent</span><span class="p">({</span>
+  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Home&#39;</span><span class="p">,</span>
+  <span class="nx">components</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">HelloWorld</span>
+  <span class="p">},</span>
+  <span class="c1">// +++
+</span><span class="c1"></span>  <span class="nx">setup</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">onMounted</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+      <span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;http://open.home.komect.com/jssdk/doc/andlink.html&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span>
+      <span class="p">})</span>
+    <span class="p">})</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>可以看到控制台报错了，请求并没有发出去，这种报错一般就是某种原因被浏览器拦截了，比如跨域
+<img src="./err1.png" alt="vue-cli">
+然后我们尝试放开electron跨域限制 webSecurity: false</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">webPreferences: {
+  // Use pluginOptions.nodeIntegration, leave this alone
+  // See nklayman.github.io/vue-cli-plugin-electron-builder/guide/security.html#node-integration for more info
+  nodeIntegration: (process.env
+    .ELECTRON_NODE_INTEGRATION as unknown) as boolean,
+  // +++
+  webSecurity: false
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>重启项目后，可以看到请求已经发送成功了。为什么我发一个http请求而不是一个https的请求呢,因为根据以往搞移动端的经验，有些底座比如ios下的一些webview，对于http的请求会有一些限制，需要额外的设置。所以我直接找个http的接口来测试了。
+<img src="./reqSuccess.png" alt="请求成功">
+这里还要说一下的是，比如我司的接口，https用的并非正规机构的SSL证书，而是自签名的证书，也会导致请求发不过去，报证书校验错误，这时就要设置electron绕过证书检查。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">// background.ts
+app.commandLine.appendSwitch(&#39;ignore-certificate-errors&#39;)
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = &#39;0&#39;
+</code></pre></td></tr></table>
+</div>
+</div><p>  request的安装就不说了，按照一般流程来就可以，这里主要说说接口的token存放与使用吧。一般web应用token放在cookie或者localstorage里，但是electron创建的BrowserWindow里面可以用吗，可以是可以的，但是由于cookie或者localstorage的存放都是以host来存放，所以最好使用loadURL方式来加载前端页面。另外查看electron，有不少issues是关于cookie和localstorage的，如果版本升级，token数据丢失也不是我想要的，所以干脆用nedb来放在用户表里吧，反正我们这个项目是需要用nedb来存上传下载任务列表等数据的,所以nedb是有引入的。然后用的时候拿出来，放在global里，主进程就可以直接用了，渲染进程里使用remote.getGlobal也是可以直接拿来用，不需要通过ipc通信去把token传来传去了。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">// 主进程使用token
+golbal.userToken
+
+// 渲染进程使用token
+remote.getGlobal(&#39;userToken&#39;)
+</code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">xianyongwen</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2020-12-14
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/electron/">electron</a>
+          <a href="/tags/vue3/">vue3</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/electron%E5%BA%94%E7%94%A8%E9%99%90%E5%88%B6%E5%8D%95%E4%BE%8B%E8%BF%90%E8%A1%8C/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Electron应用限制单例运行</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:xianyongwen@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/xianyongwen" class="iconfont icon-github" title="github"></a>
+  
+</div>
+
+<div class="copyright">
+  
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>xianyongwen</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

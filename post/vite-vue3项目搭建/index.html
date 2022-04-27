@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>vite vue3项目搭建 - XYW - A web fontend blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="xianyongwen" /><meta name="description" content="新建项目 1 2 3 yarn create vite cd-check --template vue cd cd-check yarn 启动起来了 据说vite本身就支持ts的转译，我们来看看是不是真的，看看官方文档有没有骗人。我们把HelloW" /><meta name="keywords" content="electron, vue, vite" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.92.0 with theme even" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/vite-vue3%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="vite vue3项目搭建" />
+<meta property="og:description" content="新建项目 1 2 3 yarn create vite cd-check --template vue cd cd-check yarn 启动起来了 据说vite本身就支持ts的转译，我们来看看是不是真的，看看官方文档有没有骗人。我们把HelloW" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/post/vite-vue3%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-03-29T13:29:21+08:00" />
+<meta property="article:modified_time" content="2022-03-29T13:29:21+08:00" />
+
+<meta itemprop="name" content="vite vue3项目搭建">
+<meta itemprop="description" content="新建项目 1 2 3 yarn create vite cd-check --template vue cd cd-check yarn 启动起来了 据说vite本身就支持ts的转译，我们来看看是不是真的，看看官方文档有没有骗人。我们把HelloW"><meta itemprop="datePublished" content="2022-03-29T13:29:21+08:00" />
+<meta itemprop="dateModified" content="2022-03-29T13:29:21+08:00" />
+<meta itemprop="wordCount" content="2553">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="vite vue3项目搭建"/>
+<meta name="twitter:description" content="新建项目 1 2 3 yarn create vite cd-check --template vue cd cd-check yarn 启动起来了 据说vite本身就支持ts的转译，我们来看看是不是真的，看看官方文档有没有骗人。我们把HelloW"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">XYW</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">时间线</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">XYW</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">时间线</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">vite vue3项目搭建</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2022-03-29 </span>
+        
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#新建项目">新建项目</a></li>
+            <li><a href="#页面路由vue-router">页面路由vue-router</a></li>
+            <li><a href="#全局状态管理vuex">全局状态管理vuex</a></li>
+            <li><a href="#国际化i18n">国际化i18n</a></li>
+            <li><a href="#安装element-plus">安装element-plus</a></li>
+            <li><a href="#http请求库axios">http请求库axios</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h3 id="新建项目">新建项目</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">yarn create vite cd-check --template vue
+cd cd-check
+yarn
+</code></pre></td></tr></table>
+</div>
+</div><p>启动起来了
+<img src="./su1.png" alt="成功">
+据说vite本身就支持ts的转译，我们来看看是不是真的，看看官方文档有没有骗人。我们把HelloWord.vue文件改一下，加入一些ts的语法。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&lt;script setup lang=&#34;ts&#34;&gt;
+import { ref, Ref } from &#39;vue&#39;
+
+defineProps({
+  msg: String
+})
+
+const count: Ref&lt;number&gt; = ref(0)
+&lt;/script&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>好的，没有报错，一切正常。<br>
+我们再看看项目配置，好吧，只是vue3，还不满足我们项目的使用要求，我们一步步把vue-router,vuex等常用的库引入，搭建成一个常用项目模版。
+<img src="./init.png" alt="成功"></p>
+<h3 id="页面路由vue-router">页面路由vue-router</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">yarn add vue-router
+</code></pre></td></tr></table>
+</div>
+</div><p>修改main.js文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">// main.js
+
+import { createApp } from &#39;vue&#39;
+import App from &#39;./App.vue&#39;
+import router from &#39;@/router&#39;
+
+createApp(App)
+  .use(router)
+  .mount(&#39;#app&#39;)
+</code></pre></td></tr></table>
+</div>
+</div><p>修改app.vue文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&lt;template&gt;
+  &lt;router-view /&gt;
+&lt;/template&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>在src文件夹下建立router文件夹，创建index.ts进行路由相关及守卫的配置，routerList.ts进行路由表的配置。<br>
+<img src="./2.png" alt="成功"><br>
+我们在路由表里敲下一个路由，发现vscode提示引入出错，原来路径别名还没配置，为啥要配置路径别名呢，我们../../不就ok了？这个嘛，当然是方便以后写业务代码的时候对引入依赖ctrl+c和ctrl+v啦
+<img src="./3.png" alt="编译器提示引入出错"></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">yarn add -D path
+</code></pre></td></tr></table>
+</div>
+</div><p>修改vite.config.js文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">// vite.config.js
+
+import { defineConfig } from &#39;vite&#39;
+import vue from &#39;@vitejs/plugin-vue&#39;
+import path from &#39;path&#39;
+
+export default defineConfig({
+  plugins: [vue()],
+  resolve: {
+    alias: {
+      &#34;@&#34;: path.resolve(__dirname, &#34;./src&#34;), 
+    }
+  }
+})
+</code></pre></td></tr></table>
+</div>
+</div><p>现在我们已经成功了，但是IDE还是提示引入错误:找不到模块“@/views/login.vue”或其相应的类型声明。<br>
+好吧，既然是ts的提示，我们就从ts的配置上处理，在项目根目录下添加tsconfig.json文件, 在src目录下添加shims-vue.d.ts文件。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">// tsconfig.json:
+
+{
+  &#34;compilerOptions&#34;: {
+    &#34;allowJs&#34;: true,
+    &#34;target&#34;: &#34;esnext&#34;,
+    &#34;module&#34;: &#34;esnext&#34;,
+    &#34;strict&#34;: true,
+    &#34;isolatedModules&#34;: true,
+    &#34;noImplicitAny&#34;: false,
+    &#34;jsx&#34;: &#34;preserve&#34;,
+    &#34;importHelpers&#34;: true,
+    &#34;moduleResolution&#34;: &#34;node&#34;,
+    &#34;skipLibCheck&#34;: true,
+    &#34;esModuleInterop&#34;: true,
+    &#34;allowSyntheticDefaultImports&#34;: true,
+    &#34;sourceMap&#34;: true,
+    &#34;baseUrl&#34;: &#34;.&#34;,
+    &#34;types&#34;: [&#34;vite/client&#34;],
+    &#34;paths&#34;: {
+      &#34;@/*&#34;: [
+        &#34;src/*&#34;
+      ]
+    },
+    &#34;lib&#34;: [
+      &#34;esnext&#34;,
+      &#34;dom&#34;,
+      &#34;dom.iterable&#34;,
+      &#34;scripthost&#34;
+    ]
+  },
+  &#34;include&#34;: [
+    &#34;src/**/*.ts&#34;,
+    &#34;src/**/*.tsx&#34;,
+    &#34;src/**/*.vue&#34;,
+    &#34;tests/**/*.ts&#34;,
+    &#34;tests/**/*.tsx&#34;
+  ],
+  &#34;exclude&#34;: [
+    &#34;node_modules&#34;
+  ]
+}
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">// shims-vue.d.ts:
+
+/* eslint-disable */
+declare module &#39;*.vue&#39; {
+  import type { DefineComponent } from &#39;vue&#39;
+  const component: DefineComponent&lt;{}, {}, any&gt;
+  export default component
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>路由这里，我们就先放一下，先把vuex和http库引入了，我们再回来完成路由守卫以及鉴权。<br>
+<img src="./4.png" alt="编译器提示引入出错"></p>
+<h3 id="全局状态管理vuex">全局状态管理vuex</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">yarn add vuex
+</code></pre></td></tr></table>
+</div>
+</div><p>在根目录下创建store文件夹，里面创建index.t文件和modules文件夹，user.ts文件，结构如下图所示<br>
+<img src="./5.png" alt="编译器提示引入出错"></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">// index.ts
+
+import { createStore } from &#39;vuex&#39;
+import user from &#39;./modules/user&#39;
+
+export default createStore({
+  state: {
+  },
+  mutations: {
+  },
+  actions: {
+  },
+  modules: {
+    user
+  }
+})
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">// user.ts
+
+const user = {
+  state: {
+    userInfo: {
+      uid: &#39;xywtest&#39;
+    }
+  },
+  getters: {
+    uid: state =&gt; {
+      return state.userInfo.uid
+    }
+  },
+  mutations: {
+  },
+  actions: {
+  }
+}
+
+export default user
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">// main.js
+
+import { createApp } from &#39;vue&#39;
+import App from &#39;./App.vue&#39;
+import router from &#39;@/router&#39;
+import store from &#39;@/store&#39;
+
+createApp(App)
+  .use(router)
+  .use(store)
+  .mount(&#39;#app&#39;)
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">// home.vue
+
+&lt;template&gt;
+  &lt;div&gt;
+    home
+  &lt;/div&gt;
+  &lt;div&gt;uid: {{ Store.getters.uid }}&lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup lang=&#34;ts&#34;&gt;
+import { useStore } from &#39;vuex&#39;;
+const Store = useStore()
+&lt;/script&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="./6.png" alt="编译器提示引入出错"></p>
+<h3 id="国际化i18n">国际化i18n</h3>
+<p>因为我们很多项目是需要国际化，所以我们安装i18n</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">yarn add vue-i18n@^9.0.0
+</code></pre></td></tr></table>
+</div>
+</div><p>建立如下项目结构<br>
+<img src="./7.png" alt="国际化语言目录结构"></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">// index.ts
+
+import en from &#39;./en&#39;
+import zh_cn from &#39;./zh_cn&#39;
+export default {
+  en,
+  &#39;zh-CN&#39;: zh_cn
+}
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">// zh_cn.ts
+
+export default {
+  &#39;zh-CN&#39;: &#39;中文(简体)&#39;,
+  en: &#39;English&#39;,
+  btn: {
+    confirm: &#39;确定&#39;
+  },
+  errorMessage: {
+    serverOffline: &#39;服务器连接失败，请检查网络和服务器状态&#39;
+  }
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>英文语言文件同理<br>
+在main.js引入i18n</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">// main.js
+
+import { createApp } from &#39;vue&#39;
+import App from &#39;./App.vue&#39;
+import router from &#39;@/router&#39;
+import store from &#39;@/store&#39;
+import i18n from &#39;@/utils/i18n&#39;
+
+createApp(App)
+  .use(router)
+  .use(store)
+  .use(i18n)
+  .mount(&#39;#app&#39;)
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">// home.vue
+
+&lt;template&gt;
+  &lt;div&gt;
+    home
+  &lt;/div&gt;
+  &lt;div&gt;uid: {{ Store.getters.uid }}&lt;/div&gt;
+  &lt;select @change=&#34;changeLangHandle&#34;&gt;
+    &lt;option value=&#34;zh-CN&#34;&gt;{{$t(&#39;zh-CN&#39;)}}&lt;/option&gt;
+    &lt;option value=&#34;en&#34;&gt;{{$t(&#39;en&#39;)}}&lt;/option&gt;
+  &lt;/select&gt;
+  &lt;button&gt;{{$t(&#39;btn.confirm&#39;)}}&lt;/button&gt;
+&lt;/template&gt;
+
+&lt;script setup lang=&#34;ts&#34;&gt;
+import { useStore } from &#39;vuex&#39;;
+import i18n from &#39;@/utils/i18n&#39;
+const Store = useStore()
+const changeLangHandle = e =&gt; {
+  i18n.global.locale = e.target.value
+}
+&lt;/script&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="./8.png" alt="国际化语言"></p>
+<h3 id="安装element-plus">安装element-plus</h3>
+<p>我们先安装element-plus</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">yarn add element-plus
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">// main.js
+
+import { createApp } from &#39;vue&#39;
+import App from &#39;./App.vue&#39;
+import router from &#39;@/router&#39;
+import store from &#39;@/store&#39;
+import ElementPlus from &#39;element-plus&#39;
+import &#39;element-plus/dist/index.css&#39;
+
+createApp(App)
+  .use(router)
+  .use(store)
+  .use(i18n)
+  .use(ElementPlus)
+  .mount(&#39;#app&#39;)
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">// App.vue
+
+&lt;template&gt;
+  &lt;el-config-provider :locale=&#34;i18n.global.locale === &#39;en&#39; ? en : zhCn&#34;&gt;
+    &lt;router-view /&gt;
+  &lt;/el-config-provider&gt;
+&lt;/template&gt;
+
+&lt;script setup lang=&#34;ts&#34;&gt;
+import zhCn from &#39;element-plus/lib/locale/lang/zh-cn&#39;
+import en from &#39;element-plus/lib/locale/lang/en&#39;
+import i18n from &#39;@/utils/i18n&#39;
+&lt;/script&gt;
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="http请求库axios">http请求库axios</h3>
+<p>现在，我们安装axios</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">yarn add axios
+</code></pre></td></tr></table>
+</div>
+</div><p>我们在utils下建立request.ts文件，用来配置axios。<br>
+我们设置baseURL和请求超时时间。<br>
+如果我们的项目只是部署在服务器上，跟后台服务部署在同一域下，就使用直接使用'/&lsquo;就好了。但是如果我们前端的部署可能与后台服务不在同一域下，我们就使用环境变量BASE_URL来获取。这个环境变量的配置在vite.config.js里设定。<br>
+<img src="./9.png" alt="类型错误"><br>
+Ts提示类型错误，我们在src目录下建立env.d.ts文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">interface ImportMetaEnv {
+  readonly PROD: string;
+  readonly BASE_URL: string;
+  // 更多环境变量...
+}
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>报错提示消失了
+然后我们增加一些接口发送拦截，与响应拦截。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span><span class="lnt">86
+</span><span class="lnt">87
+</span><span class="lnt">88
+</span><span class="lnt">89
+</span><span class="lnt">90
+</span><span class="lnt">91
+</span><span class="lnt">92
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">import axios from &#39;axios&#39;
+import store from &#39;../store&#39;
+import i18n from &#39;@/utils/i18n&#39;
+import { ElNotification, ElMessage } from &#39;element-plus&#39;
+
+// 创建axios实例
+const request = axios.create({
+  baseURL: import.meta.env.PROD ? import.meta.env.BASE_URL : &#39;/&#39;, // api 的 base_url
+  timeout: 12000000 // 请求超时时间
+})
+
+// request拦截器
+request.interceptors.request.use(
+  config =&gt; {
+      let temp: {
+        &#39;OCS-APIRequest&#39;: boolean;
+        &#39;xyw-Client&#39;: boolean;
+        &#39;Content-Type&#39;: string;
+        Authorization?: string;
+      } = {
+        &#39;OCS-APIRequest&#39;: true,
+        &#39;xyw-Client&#39;: true,
+        &#39;Content-Type&#39;: &#39;application/json&#39;
+      }
+      const token = localStorage.getItem(&#39;xywToken&#39;)
+      if (token) {
+        temp.Authorization = token
+      }
+      config.headers = Object.assign(
+        temp,
+        config.headers
+      )
+    return config
+  },
+  error =&gt; {
+    // Do something with request error
+    Promise.reject(error)
+  }
+)
+
+// response 拦截器
+request.interceptors.response.use(
+  (response: any) =&gt; {
+    const code = response.status
+    if (code &lt; 200 || code &gt; 300) {
+      const errmsg = response.message
+      ElNotification({
+        type: &#39;error&#39;,
+        title: errmsg
+      })
+      return Promise.reject(&#39;error&#39;)
+    } else {
+      return response
+    }
+  },
+  error =&gt; {
+    if (error &amp;&amp;
+      error.config &amp;&amp;
+      error.config.headers &amp;&amp;
+      error.config.headers.not_show_err) {
+      return Promise.reject(error)
+    }
+
+    let code = 0
+    try {
+      code = error.response.status
+    } catch (e) {
+      if (error.toString().indexOf(&#39;Error: timeout&#39;) !== -1 ||
+      (error.toString().indexOf(&#39;Error: Network Error&#39;) !== -1)) {
+        ElMessage.error(i18n.global.t(&#39;errorMessage.serverOffline&#39;))
+        return Promise.reject(error)
+      }
+    }
+    if (code === 401) {
+      store.dispatch(&#39;LogOut&#39;)
+    } else {
+      let errorMsg = error.toString()
+      if (error &amp;&amp;
+        error.response &amp;&amp;
+        error.response.data) {
+        errorMsg = error.response.data
+        ElNotification({
+          type: &#39;error&#39;,
+          title: errorMsg,
+          duration: 3000
+        })
+    }
+    return Promise.reject(error)
+  }
+})
+
+export default request
+</code></pre></td></tr></table>
+</div>
+</div><p>我们在src下建一个api文件夹，在里面新建一个test.ts文件，用来测试接口</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">// test.ts
+
+import request from &#34;@/utils/request&#34;
+
+export function testReq() {
+  return request({
+    url: &#39;https://www.baidu.com&#39;,
+    method: &#39;GET&#39;
+  })
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>在home.vue页面，我们加入一些测试代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">// home.vue
+
+&lt;template&gt;
+  &lt;div&gt;
+    home
+  &lt;/div&gt;
+  &lt;div&gt;uid: {{ Store.getters.uid }}&lt;/div&gt;
+  &lt;select @change=&#34;changeLangHandle&#34;&gt;
+    &lt;option value=&#34;zh-CN&#34;&gt;{{$t(&#39;zh-CN&#39;)}}&lt;/option&gt;
+    &lt;option value=&#34;en&#34;&gt;{{$t(&#39;en&#39;)}}&lt;/option&gt;
+  &lt;/select&gt;
+  &lt;button&gt;{{$t(&#39;btn.confirm&#39;)}}&lt;/button&gt;
+  &lt;el-pagination
+    :page-size=&#34;20&#34;
+    :pager-count=&#34;11&#34;
+    layout=&#34;total, prev, pager, next&#34;
+    :total=&#34;1000&#34;
+  /&gt;
+&lt;/template&gt;
+
+&lt;script setup lang=&#34;ts&#34;&gt;
+import { useStore } from &#39;vuex&#39;
+import { onMounted } from &#39;vue&#39;
+import i18n from &#39;@/utils/i18n&#39;
+import { testReq } from &#39;@/api/test&#39;
+const Store = useStore()
+const changeLangHandle = e =&gt; {
+  i18n.global.locale = e.target.value
+}
+onMounted(() =&gt; {
+  testReq().then(res =&gt; {
+    console.log(res)
+  })
+})
+&lt;/script&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>刷新浏览器，果然出现跨域问题。(Access to XMLHttpRequest at &lsquo;<a href="https://www.baidu.com/'">https://www.baidu.com/'</a> from origin &lsquo;http://localhost:3000&rsquo; has been blocked by CORS policy: Response to preflight request doesn&rsquo;t pass access control check: Redirect is not allowed for a preflight request.)<br>
+<img src="./10.png" alt="类型错误"><br>
+我们需要配置一下开发服务器，一般后端服务接口都有一个或者多个统一的前缀，我们用/api来举例</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">// vite.config.js
+
+export default defineConfig({
+  plugins: [vue()],
+  resolve: {
+    alias: {
+      &#34;@&#34;: path.resolve(__dirname, &#34;./src&#34;), 
+    }
+  },
+  server: {
+    proxy: {
+      // 正则表达式写法
+      &#39;^/api&#39;: {
+        target: &#39;https://www.baidu.com&#39;,
+        secure: false,
+        changeOrigin: true,
+        rewrite: (path) =&gt; path.replace(/^\/api/, &#39;&#39;)
+      },
+    }
+  }
+})
+</code></pre></td></tr></table>
+</div>
+</div><p>然后我们把测试接口改成：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">// test.ts
+
+import request from &#34;@/utils/request&#34;
+
+export function testReq() {
+  return request({
+    url: &#39;/api&#39;,
+    method: &#39;GET&#39;
+  })
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>然后我们看到，请求成功了<br>
+<img src="./11.png" alt=""></p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">xianyongwen</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2022-03-29
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/vite%E6%9E%84%E5%BB%BA%E7%9A%84vue3%E9%A1%B9%E7%9B%AEsvg%E6%96%87%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">vite构建的vue3项目，svg文件的使用</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/%E8%AE%B0%E4%B8%80%E6%AC%A1electron-vue3%E9%A1%B9%E7%9B%AE%E7%9A%84%E5%8D%87%E7%BA%A7/">
+            <span class="next-text nav-default">记一次electron Vue3项目的升级</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:xianyongwen@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/xianyongwen" class="iconfont icon-github" title="github"></a>
+  
+</div>
+
+<div class="copyright">
+  
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>xianyongwen</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
